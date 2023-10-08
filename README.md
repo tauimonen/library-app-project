@@ -33,3 +33,4 @@ React - TypeScript - Spring Boot - MySQL
 ## MySQL database
 
 SQL scripts in starter files to create a database scema and tables and add books to the database
+![database_tables](https://github.com/tauimonen/library-app-project/assets/64781021/747ba619-089b-43b7-9411-d4b7536c415f)
