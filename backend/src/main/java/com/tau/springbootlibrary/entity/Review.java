@@ -2,6 +2,7 @@ package com.tau.springbootlibrary.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
@@ -19,13 +20,14 @@ public class Review {
     private String userEmail;
 
     @Column(name = "date")
+    @CreationTimestamp
     private Date date;
 
     @Column(name = "rating")
     private double Rating;
 
     @Column(name = "book_id")
-    private String bookId;
+    private Long bookId;
 
     @Column(name = "review_description")
     private String reviewDescription;
