@@ -39,7 +39,7 @@ SQL scripts in starter files to create a database scema and tables and add books
 ## Authentication
 
 - Create a developer account at okta.com
-Add OpenID Connect client app in Okta: Create a new application in the Developer Account
+Add OpenID Connect client app in Okta: Create a new application in the Developer Account.
 Select option for OIDC: Open ID connect > Single-Page Application
 - Set up app configurarion for OpenID Connect (clientId & issuer)
 - Install Okta SDK dependecies: Sign-In Widged, Okta React SDK, Okta JavaScript SDK
