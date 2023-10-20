@@ -36,6 +36,22 @@ Spring Boot 3.1.4 starter project with:
 SQL scripts in starter files to create a database scema and tables and add books to the database
 ![database_tables](https://github.com/tauimonen/library-app-project/assets/64781021/747ba619-089b-43b7-9411-d4b7536c415f)
 
+## Authentication
+
+Create a developer account at okta.com
+Add OpenID Connect client app in Okta
+-  Create a new application in the Developer Account
+Select option for OIDC: Open ID connect > Single-Page Application
+Set up app configurarion for OpenID Connect (clientId & issuer)
+Install Okta SDK dependecies 
+- Sign-In Widged
+- Okta React SDK
+- Okta JavaScript SDK
+Integrate Okta Sign-In Widged
+Add Configurarions to our application 
+Create new Security Routes & Navigation Login/Logout (OAuth 2.0 API)
+
 ## Containerization
 
 Create Dockerfiles and Docker-compose file for containerization.
+
