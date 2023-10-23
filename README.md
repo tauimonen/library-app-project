@@ -1,6 +1,6 @@
 # library-app-project
 
-React - TypeScript - Spring Boot - MySQL - Docker
+Java - Spring Boot - TypeScript/JavaScript - React - MySQL - Docker
 
 ## Responsive React front end
 
