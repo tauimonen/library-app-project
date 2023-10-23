@@ -47,6 +47,9 @@ Select option for OIDC: Open ID connect > Single-Page Application
 - Add Configurarions to our application 
 - Create new Security Routes & Navigation Login/Logout (OAuth 2.0 API)
 
+NOTE: In Spring Security 5.8, the antMatchers, mvcMatchers, and regexMatchers methods were deprecated in favor of new requestMatchers methods (https://docs.spring.io/spring-security/reference/5.8/migration/servlet/config.html).
+So instead of using antMatchers method, application is now using requestMatchers method and my code compiles again. Maybe it would be good to use even the new securityMatchers.
+
 ## Containerization
 
 Create Dockerfiles and Docker-compose file for containerization.
