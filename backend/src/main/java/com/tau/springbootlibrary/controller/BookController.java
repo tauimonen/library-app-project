@@ -2,9 +2,9 @@ package com.tau.springbootlibrary.controller;
 
 import com.tau.springbootlibrary.entity.Book;
 import com.tau.springbootlibrary.service.BookService;
-import com.tau.springbootlibrary.utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+import org.springframework.security.oauth2.server.resource.authentication
+        .JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 // React is able to call controller without CORS error when we use CrossOrigin
@@ -21,22 +21,24 @@ public class BookController {
     }
 
     @GetMapping("/secure/currentloans/count")
-    public int currentLoansCount(@RequestHeader(value = "Authorization") String token) {
-        String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+    public int currentLoansCount(JwtAuthenticationToken
+                                             jwtAuthenticationToken) {
+        String userEmail = jwtAuthenticationToken.getToken().getSubject();
         return bookService.currentLoansCount(userEmail);
     }
 
     @GetMapping("/secure/ischeckedout/byuser")
-    public Boolean checkoutBookByUser(@RequestHeader(value = "Authorization") String token,
+    public Boolean checkoutBookByUser(JwtAuthenticationToken
+                                                  jwtAuthenticationToken,
                                       @RequestParam Long bookId) {
-        String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+        String userEmail = jwtAuthenticationToken.getToken().getSubject();
         return bookService.checkoutBookByUser(userEmail, bookId);
     }
 
     @PutMapping("/secure/checkout")
-    public Book checkoutBook (@RequestHeader(value = "Authorization") String token,
+    public Book checkoutBook (JwtAuthenticationToken jwtAuthenticationToken,
                               @RequestParam Long bookId) throws Exception {
-        String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+        String userEmail = jwtAuthenticationToken.getToken().getSubject();
         return bookService.checkoutBook(userEmail, bookId);
     }
 }
