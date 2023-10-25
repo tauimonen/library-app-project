@@ -1,6 +1,7 @@
 package com.tau.springbootlibrary.entity;
-import jakarta.persistence.*;
+
 import lombok.Data;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "book")
