@@ -1,6 +1,10 @@
 # library-app-project
 
+<<<<<<< HEAD
 Java - Spring Boot - TypeScript/JavaScript - React - MySQL - Docker
+=======
+React - TypeScript - Spring Boot - MySQL - Docker
+>>>>>>> checkout-feature
 
 ## Responsive React front end
 
@@ -36,6 +40,7 @@ Spring Boot 3.1.4 starter project with:
 SQL scripts in starter files to create a database scema and tables and add books to the database
 ![database_tables](https://github.com/tauimonen/library-app-project/assets/64781021/747ba619-089b-43b7-9411-d4b7536c415f)
 
+<<<<<<< HEAD
 ## Authentication
 
 - Create a developer account at okta.com
@@ -54,3 +59,8 @@ So instead of using antMatchers method, application is now using requestMatchers
 
 Create Dockerfiles and Docker-compose file for containerization.
 
+=======
+## Containerization
+
+Create Dockerfiles and Docker-compose file for containerization.
+>>>>>>> checkout-feature
