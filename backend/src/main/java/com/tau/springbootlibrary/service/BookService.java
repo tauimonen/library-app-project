@@ -72,11 +72,14 @@ public class BookService {
         return checkoutRepository.findBooksByUserEmail(userEmail).size();
     }
 
-    public List<ShelfCurrentLoansResponse> currentLoans(String userEmail) throws Exception {
+    public List<ShelfCurrentLoansResponse> currentLoans(String userEmail)
+            throws Exception {
 
-        List<ShelfCurrentLoansResponse> shelfCurrentLoansResponses = new ArrayList<>();
+        List<ShelfCurrentLoansResponse> shelfCurrentLoansResponses =
+                new ArrayList<>();
 
-        List<Checkout> checkoutList = checkoutRepository.findBooksByUserEmail(userEmail);
+        List<Checkout> checkoutList = checkoutRepository.findBooksByUserEmail(
+                userEmail);
         List<Long> bookIdList = new ArrayList<>();
 
         for (Checkout i: checkoutList) {
@@ -98,10 +101,12 @@ public class BookService {
 
                 TimeUnit time = TimeUnit.DAYS;
 
-                long difference_In_Time = time.convert(d1.getTime() - d2.getTime(),
+                long difference_In_Time = time.convert(
+                        d1.getTime() - d2.getTime(),
                         TimeUnit.MILLISECONDS);
 
-                shelfCurrentLoansResponses.add(new ShelfCurrentLoansResponse(book, (int) difference_In_Time));
+                shelfCurrentLoansResponses.add(new ShelfCurrentLoansResponse(
+                        book, (int) difference_In_Time));
             }
         }
         return shelfCurrentLoansResponses;
@@ -137,7 +142,8 @@ public class BookService {
 
     public void renewLoan(String userEmail, Long bookId) throws Exception {
 
-        Checkout validateCheckout = checkoutRepository.findByUserEmailAndBookId(userEmail, bookId);
+        Checkout validateCheckout = checkoutRepository.findByUserEmailAndBookId(
+                userEmail, bookId);
 
         if (validateCheckout == null) {
             throw new Exception("Book does not exist or not checked out by user");
@@ -149,7 +155,8 @@ public class BookService {
         Date d2 = sdFormat.parse(LocalDate.now().toString());
 
         if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0) {
-            validateCheckout.setReturnDate(LocalDate.now().plusDays(7).toString());
+            validateCheckout.setReturnDate(LocalDate.now().plusDays(7)
+                    .toString());
             checkoutRepository.save(validateCheckout);
         }
     }

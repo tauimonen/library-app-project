@@ -5,6 +5,7 @@ import com.tau.springbootlibrary.requestmodels.AdminQuestionRequest;
 import com.tau.springbootlibrary.service.MessagesService;
 import com.tau.springbootlibrary.utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("http://localhost:3000")
@@ -20,16 +21,18 @@ public class MessagesController {
     }
 
     @PostMapping("/secure/add/message")
-    public void postMessage(@RequestHeader(value="Authorization") String token,
+    public void postMessage(JwtAuthenticationToken jwtAuthenticationToken,
                             @RequestBody Message messageRequest) {
-        String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+        String userEmail = jwtAuthenticationToken.getToken().getSubject();
         messagesService.postMessage(messageRequest, userEmail);
     }
 
     @PutMapping("/secure/admin/message")
     public void putMessage(@RequestHeader(value="Authorization") String token,
-                           @RequestBody AdminQuestionRequest adminQuestionRequest) throws Exception {
-        String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+                           JwtAuthenticationToken jwtAuthenticationToken,
+                           @RequestBody AdminQuestionRequest adminQuestionRequest)
+            throws Exception {
+        String userEmail = jwtAuthenticationToken.getToken().getSubject();
         String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
         if (admin == null || !admin.equals("admin")) {
             throw new Exception("Administration page only.");

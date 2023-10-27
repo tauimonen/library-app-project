@@ -3,6 +3,7 @@ package com.tau.springbootlibrary.controller;
 import com.tau.springbootlibrary.requestmodels.ReviewRequest;
 import com.tau.springbootlibrary.service.ReviewService;
 import com.tau.springbootlibrary.utils.ExtractJWT;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("http://localhost:3000")
@@ -17,9 +18,9 @@ public class ReviewController {
     }
 
     @GetMapping("/secure/user/book")
-    public Boolean reviewBookByUser(@RequestHeader(value="Authorization") String token,
+    public Boolean reviewBookByUser(JwtAuthenticationToken jwtAuthenticationToken,
                                     @RequestParam Long bookId) throws Exception {
-        String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+        String userEmail = jwtAuthenticationToken.getToken().getSubject();
 
         if (userEmail == null) {
             throw new Exception("User email is missing");
@@ -28,9 +29,9 @@ public class ReviewController {
     }
 
     @PostMapping("/secure")
-    public void postReview(@RequestHeader(value="Authorization") String token,
+    public void postReview(JwtAuthenticationToken jwtAuthenticationToken,
                            @RequestBody ReviewRequest reviewRequest) throws Exception {
-        String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+        String userEmail = jwtAuthenticationToken.getToken().getSubject();
         if (userEmail == null) {
             throw new Exception("User email is missing");
         }

@@ -22,8 +22,10 @@ public class ReviewService {
         this.reviewRepository = reviewRepository;
     }
 
-    public void postReview(String userEmail, ReviewRequest reviewRequest) throws Exception {
-        Review validateReview = reviewRepository.findByUserEmailAndBookId(userEmail, reviewRequest.getBookId());
+    public void postReview(String userEmail, ReviewRequest reviewRequest)
+            throws Exception {
+        Review validateReview = reviewRepository.findByUserEmailAndBookId(
+                userEmail, reviewRequest.getBookId());
         if (validateReview != null) {
             throw new Exception("Review already created");
         }
@@ -42,7 +44,8 @@ public class ReviewService {
     }
 
     public Boolean userReviewListed(String userEmail, Long bookId) {
-        Review validateReview = reviewRepository.findByUserEmailAndBookId(userEmail, bookId);
+        Review validateReview = reviewRepository.findByUserEmailAndBookId(
+                userEmail, bookId);
         if (validateReview != null) {
             return true;
         } else {
