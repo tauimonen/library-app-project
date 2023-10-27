@@ -4,7 +4,6 @@ import com.tau.springbootlibrary.requestmodels.AddBookRequest;
 import com.tau.springbootlibrary.service.AdminService;
 import com.tau.springbootlibrary.utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("http://localhost:3000")
@@ -20,9 +19,9 @@ public class AdminController {
     }
 
     @PutMapping("/secure/increase/book/quantity")
-    public void increaseBookQuantity(JwtAuthenticationToken jwtAuthenticationToken,
+    public void increaseBookQuantity(@RequestHeader(value="Authorization") String token,
                                      @RequestParam Long bookId) throws Exception {
-        String admin = jwtAuthenticationToken.getToken().getSubject();
+        String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
         if (admin == null || !admin.equals("admin")) {
             throw new Exception("Administration page only");
         }
@@ -30,9 +29,9 @@ public class AdminController {
     }
 
     @PutMapping("/secure/decrease/book/quantity")
-    public void decreaseBookQuantity(JwtAuthenticationToken jwtAuthenticationToken,
+    public void decreaseBookQuantity(@RequestHeader(value="Authorization") String token,
                                      @RequestParam Long bookId) throws Exception {
-        String admin = jwtAuthenticationToken.getToken().getSubject();
+        String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
         if (admin == null || !admin.equals("admin")) {
             throw new Exception("Administration page only");
         }
@@ -40,9 +39,9 @@ public class AdminController {
     }
 
     @PostMapping("/secure/add/book")
-    public void postBook(JwtAuthenticationToken jwtAuthenticationToken,
+    public void postBook(@RequestHeader(value="Authorization") String token,
                          @RequestBody AddBookRequest addBookRequest) throws Exception {
-        String admin = jwtAuthenticationToken.getToken().getSubject();
+        String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
         if (admin == null || !admin.equals("admin")) {
             throw new Exception("Administration page only");
         }
@@ -50,9 +49,9 @@ public class AdminController {
     }
 
     @DeleteMapping("/secure/delete/book")
-    public void deleteBook(JwtAuthenticationToken jwtAuthenticationToken,
+    public void deleteBook(@RequestHeader(value="Authorization") String token,
                            @RequestParam Long bookId) throws Exception {
-        String admin = jwtAuthenticationToken.getToken().getSubject();
+        String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
         if (admin == null || !admin.equals("admin")) {
             throw new Exception("Administration page only");
         }
@@ -60,6 +59,17 @@ public class AdminController {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
