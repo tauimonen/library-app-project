@@ -50,9 +50,3 @@ Select option for OIDC: Open ID connect > Single-Page Application
 ## Containerization
 
 Create Dockerfiles and Docker-compose file for containerization.
-
-
-## Containerization
-
-Create Dockerfiles and Docker-compose file for containerization.
->>>>>>> checkout-feature
