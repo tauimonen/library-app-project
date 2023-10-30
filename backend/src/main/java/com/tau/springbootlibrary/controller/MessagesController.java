@@ -33,6 +33,7 @@ public class MessagesController {
                            @RequestBody AdminQuestionRequest adminQuestionRequest)
             throws Exception {
         String userEmail = jwtAuthenticationToken.getToken().getSubject();
+
         String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
         if (admin == null || !admin.equals("admin")) {
             throw new Exception("Administration page only.");
