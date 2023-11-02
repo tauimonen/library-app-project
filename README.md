@@ -47,6 +47,14 @@ Select option for OIDC: Open ID connect > Single-Page Application
 - Add Configurarions to our application 
 - Create new Security Routes & Navigation Login/Logout (OAuth 2.0 API)
 
+## Security
+
+- Create localhost.conf
+- Generate key and self-signed certificate with OpenSSL
+- Place the .env file
+- Change HTTP -> HTTPS and add "set HTTPS=true" to the start script
+- When deploying the application change the certificate to the one provided by the hosting service
+
 ## Containerization
 
 Create Dockerfiles and Docker-compose file for containerization.
