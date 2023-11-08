@@ -59,7 +59,7 @@ Select option for OIDC: Open ID connect > Single-Page Application
 - Create Stripe Developer Account
 - Add Stripe Maven Dependency
 - Configure Stripe API Key
-- Create custom PaymantInfo DTO
+- Create custom PaymentInfo DTO
 - Create PaymentService to create a PaymentIntent
 - Create PaymentController to expose ”/payment-intent” endpoint
   
