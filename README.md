@@ -55,6 +55,14 @@ Select option for OIDC: Open ID connect > Single-Page Application
 - Change HTTP -> HTTPS and add "set HTTPS=true" to the start script
 - When deploying the application change the certificate to the one provided by the hosting service
 
+## Payment Implementation - Backend
+- Create Stripe Developer Account
+- Add Stripe Maven Dependency
+- Configure Stripe API Key
+- Create custom PaymantInfo DTO
+- Create PaymentService to create a PaymentIntent
+- Create PaymentController to expose ”/payment-intent” endpoint
+  
 ## Containerization
 
 Create Dockerfiles and Docker-compose file for containerization.
