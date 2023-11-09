@@ -62,6 +62,14 @@ Select option for OIDC: Open ID connect > Single-Page Application
 - Create custom PaymentInfo DTO
 - Create PaymentService to create a PaymentIntent
 - Create PaymentController to expose ”/payment-intent” endpoint
+
+## Payment Implementation - Frontend
+- Install stripe API
+- Add Sripe script to index.html
+- Add Stripe published key
+- Create PaymentInfo
+- Create PaymentPage
+- Update book checkout page
   
 ## Containerization
 
