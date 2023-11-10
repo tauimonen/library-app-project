@@ -4,35 +4,34 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.backend
     ports:
       - "8080:8080"
     environment:
       MYSQL_HOST: db
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: your_database_name
-      MYSQL_USER: your_database_user
-      MYSQL_PASSWORD: your_database_password
+      MYSQL_PORT: 3307
+      MYSQL_DATABASE: reactlibrarydatabase
+      MYSQL_USER: root
+      MYSQL_PASSWORD: test1234!
     depends_on:
       - db
 
   frontend:
-    image: node:14 # You can use an official Node.js image or one suitable for your frontend
-    working_dir: /app/frontend
-    volumes:
-      - ./frontend:/app/frontend
+    build:
+      context: ./frontend/react-library
+      dockerfile: Dockerfile.frontend
     ports:
       - "3000:3000"
-    command: ["npm", "start"]
     depends_on:
       - backend
 
   db:
     image: mysql:latest
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: your_root_password
-      MYSQL_DATABASE: your_database_name
-      MYSQL_USER: your_database_user
-      MYSQL_PASSWORD: your_database_password
+      MYSQL_ROOT_PASSWORD: test1234!
+      MYSQL_DATABASE: reactlibrarydatabase
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
