@@ -14,4 +14,8 @@ public class ShelfCurrentLoansResponse {
     private Book book;
 
     private int daysLeft;
+
+    public ShelfCurrentLoansResponse() {
+
+    }
 }
