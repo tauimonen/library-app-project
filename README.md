@@ -2,45 +2,6 @@
 
 Java - Spring Boot - TypeScript/JavaScript - React - MySQL - Docker
 
-## Running and building the containers
-
-Docker-compose creates three images and three containers from them, one for the backend, one for the frontend and one for the database.
-
-1. **Ensure Docker is Running:**
-   Make sure Docker is running on your machine.
-
-2. **Navigate to Your Project Directory:**
-   Open a terminal and navigate to the directory where your `docker-compose.yml` file is located.
-
-   ```bash
-   cd "your_folder"/library-app
-   ```
-
-3. **Build and Start Services:**
-   Run the following command to build and start your services:
-
-   ```bash
-   docker-compose up --build
-   ```
-
-   The `--build` flag is used to ensure that Docker Compose builds the images before starting the services.
-
-4. **Access Your Application:**
-   After the services are started, you can access your application. Based on your configuration, the frontend should be available at `http://localhost:3000`.
-
-5. **Stop Services:**
-   When you're done testing, you can stop the services using:
-
-   ```bash
-   docker-compose down
-   ```
-
-   If you want to remove the volumes as well, you can use:
-
-   ```bash
-   docker-compose down -v
-   ```
-   
 # Application development plan
 
 ## Responsive React front end
@@ -80,12 +41,12 @@ SQL scripts in starter files to create a database scema and tables and add books
 ## Authentication
 
 - Create a developer account at okta.com
-Add OpenID Connect client app in Okta: Create a new application in the Developer Account.
-Select option for OIDC: Open ID connect > Single-Page Application
+  Add OpenID Connect client app in Okta: Create a new application in the Developer Account.
+  Select option for OIDC: Open ID connect > Single-Page Application
 - Set up app configurarion for OpenID Connect (clientId & issuer)
 - Install Okta SDK dependecies: Sign-In Widged, Okta React SDK, Okta JavaScript SDK
 - Integrate Okta Sign-In Widged
-- Add Configurarions to our application 
+- Add Configurarions to our application
 - Create new Security Routes & Navigation Login/Logout (OAuth 2.0 API)
 
 ## Security
@@ -97,6 +58,7 @@ Select option for OIDC: Open ID connect > Single-Page Application
 - When deploying the application change the certificate to the one provided by the hosting service
 
 ## Payment Implementation - Backend
+
 - Create Stripe Developer Account
 - Add Stripe Maven Dependency
 - Configure Stripe API Key
@@ -105,13 +67,14 @@ Select option for OIDC: Open ID connect > Single-Page Application
 - Create PaymentController to expose ”/payment-intent” endpoint
 
 ## Payment Implementation - Frontend
+
 - Install stripe API
 - Add Sripe script to index.html
 - Add Stripe published key
 - Create PaymentInfo
 - Create PaymentPage
 - Update book checkout page
-  
+
 ## Containerization
 
 Create Dockerfiles and Docker-compose file for containerization.
