@@ -108,10 +108,5 @@ Library App Project is a full-stack web application that allows users to explore
 3. Checkout and pay using Stripe.
 4. Securely manage user authentication and payments.
 
-## License
-This project is licensed under the MIT License.
-
-## Contact
-For any inquiries, please contact the project maintainer at [your-email@example.com](mailto:your-email@example.com).
 
 
